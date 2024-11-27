@@ -1,0 +1,13 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+images:
+- name: ghcr.io/mostlydevops/wordsmith-web
+  newTag: 20230422-6c275d1
+- name: ghcr.io/mostlydevops/wordsmith-api
+  newTag: 20230422-896efd5
+configMapGenerator:
+- files:
+  - words.sql
+  name: db-schema
+resources:
+- ../../base
